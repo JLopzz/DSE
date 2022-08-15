@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MvcPelicula.Models.Pelicula>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pagina principal</h1>
+
+<p>
+    <a asp-action="Create">Crea una nueva pelicula</a>
+
+    @using (Html.BeginForm("Index","Peliculas",FormMethod.Post))
+    {
+        <p>
+            Titulo: @Html.TextBox("buscarString") <br />
+            Genero: @Html.DropDownList("generoPelicula","All") <br />
+            Precio: @Html.TextBox("precioPelicula") <br />
+            <input type="submit" value="Filtrar"/>
+         </p>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lanzamiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lanzamiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
