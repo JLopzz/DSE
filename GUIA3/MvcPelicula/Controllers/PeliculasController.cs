@@ -55,13 +55,14 @@ namespace MvcPelicula.Controllers
             var peliV = (from p in _context.Pelicula
                          join d in _context.Director
                          on p.Id equals d.IdPelicula
-                         select new {
-                         p.Id,
-                         p.Titulo,
-                         p.Lanzamiento,
-                         p.Genero,
-                         NombreDirector = d.Nombre});
-            Debug.WriteLine(peliV);
+                         select new peliDirector{
+                         Id = p.Id,
+                         Titulo = p.Titulo,
+                         Lanzamiento = p.Lanzamiento,
+                         Genero = p.Genero,
+                         Productor = p.Productor,
+                         Director = d.Nombre});
+            //Debug.WriteLine(peliV.ToListAsync());
             return View(await peliV.ToListAsync());
 
 

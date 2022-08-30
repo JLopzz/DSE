@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcPelicula.Models.Pelicula>
+﻿@model IEnumerable<MvcPelicula.Models.peliDirector>
 
 @{
     ViewData["Title"] = "Index";
@@ -8,7 +8,7 @@
 
 <p>
     <a asp-action="Create">Crea una nueva pelicula</a>
-
+@*
     @using (Html.BeginForm("Index","Peliculas",FormMethod.Post))
     {
         <p>
@@ -17,7 +17,7 @@
             Precio: @Html.TextBox("precioPelicula") <br />
             <input type="submit" value="Filtrar"/>
          </p>
-    }
+    }*@
 </p>
 <table class="table">
     <thead>
@@ -32,10 +32,10 @@
                 @Html.DisplayNameFor(model => model.Genero)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Precio)
+                @Html.DisplayNameFor(model => model.Productor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Calificacion)
+                @Html.DisplayNameFor(model => model.Director)
             </th>
             <th></th>
         </tr>
@@ -53,10 +53,10 @@
                 @Html.DisplayFor(modelItem => item.Genero)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Precio)
+                @Html.DisplayFor(modelItem => item.Productor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Calificacion)
+                @Html.DisplayFor(modelItem => item.Director)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
