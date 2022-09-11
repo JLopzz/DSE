@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Desafio1_LF172473.Models.Excursiones>
+
+@{
+    ViewData["Title"] = "Excursiones";
+}
+
+<h1>Listado de Excursiones Disponibles</h1>
+
+<form method="post">
+    <div class="row">
+        <div class="col-4 row">
+            <div class="col-12 text-center">
+                Precios
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Min" aria-label="Min" id="min" name="min">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Max" aria-label="Max" id="max" name="max">
+            </div>
+        </div>
+        <div class="col">
+            <label for="pais" class="form-label">Pais de Destino</label>
+            <input type="text" class="form-control" placeholder="Londres" aria-label="Pais Destino" id="pais" name="pais">
+        </div>
+        <div class="col">
+            <label for="tipo" class="form-label">Tipo de Destino</label>
+            <select class="form-select" aria-label="Tipo Destino" id="tipo" name="tipo">
+                <option selected>Todos</option>
+                <option value="Balnearios">Balnearios</option>
+                <option value="Montañas">Montañas</option>
+                <option value="Playas">Playas</option>
+                <option value="Zoologicos">Zoologicos</option>
+            </select>
+        </div>
+        <div class="col-1">
+            <input type="submit" class="form-control" placeholder="Filtrar" aria-label="Filtrar" value="Filtrar">
+        </div>
+    </div>
+</form>
+
+@*@using (Html.BeginForm("Index", "Peliculas", FormMethod.Post))
+{
+    <p>
+        Titulo: @Html.TextBox("buscarString") <br />
+        Precio: @Html.TextBox("precioPelicula") <br />
+        <input type="submit" value="Filtra" />
+    </p>
+}*@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lugar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoxPersona)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    @Html.DisplayFor(modelItem => item.Lugar)
+                </a> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoxPersona)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

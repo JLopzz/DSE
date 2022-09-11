@@ -1,0 +1,36 @@
+﻿@*@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+*@
+
+@{
+    var imagePath = "";
+    if (ViewData["photoChoice"] != null)
+    {
+        imagePath = @"images\" + ViewData["photoChoice"];
+    }
+}
+<body>
+    <h1>Displaying an Image On the Fly</h1>
+    <form method="post" action="">
+        <div>
+            I want to see:
+            <select name="photoChoice">
+                <option value="fondoAvatar1.jpg">Photo 1</option>
+                <option value="fondoAvatar2.jpg">Photo 2</option>
+            </select>
+            &nbsp;
+            <input type="submit" value="Submit" />
+        </div>
+        <div style="padding:10px;">
+            <img src="images\fondoAvatar1.jpg" alt="Sample Image" width="300px" />
+            <img src="images\fondoAvatar2.jpg" alt="Sample Image" width="300px" />
+        </div>
+    </form>
+</body>
+

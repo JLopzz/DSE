@@ -1,0 +1,1 @@
+﻿select * from Excursiones where CostoxPersona>=0 and CostoxPersona<=100
