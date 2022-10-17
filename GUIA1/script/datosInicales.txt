@@ -1,0 +1,21 @@
+
+
+b.HasData(
+    new Pelicula { Id = 1, Genero = "Accion", Lanzamiento = DateTime.Parse("2014-10-24"), Precio = 9.99M, Titulo = "John Wick" },
+    new Pelicula { Id = 2, Genero = "Accion", Lanzamiento = DateTime.Parse("2015-10-26"), Precio = 6.99M, Titulo = "John Wick II" },
+    new Pelicula { Id = 3, Genero = "Accion", Lanzamiento = DateTime.Parse("2019-05-17"), Precio = 9.99M, Titulo = "John Wick III" },
+    new Pelicula { Id = 4, Genero = "Romance", Lanzamiento = DateTime.Parse("2012-02-06"), Precio = 6.99M, Titulo = "Votos de Amor" }
+    );
+
+
+    
+migrationBuilder.InsertData(
+    table: "Pelicula",
+    columns: new[] { "Id", "Genero", "Lanzamiento", "Precio", "Titulo" },
+    values: new object[,]
+    {
+        { 1, "Accion", new DateTime(2014, 10, 24, 0, 0, 0, 0, DateTimeKind.Unspecified), 9.99m, "John Wick" },
+        { 2, "Accion", new DateTime(2015, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), 6.99m, "John Wick II" },
+        { 3, "Accion", new DateTime(2019, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 9.99m, "John Wick III" },
+        { 4, "Romance", new DateTime(2012, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), 6.99m, "Votos de Amor" }
+    });
