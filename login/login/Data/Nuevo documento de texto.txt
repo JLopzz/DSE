@@ -1,0 +1,30 @@
+USE [logindse]
+GO
+/****** Object:  StoredProcedure [dbo].[iniciaSesion]    Script Date: 31/10/2022 22:11:26 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[iniciaSesion] 
+	@usuario varchar(50),
+	@contra varchar(50)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	--SET NOCOUNT ON
+	declare @existeUser int = 0
+		,@res varchar(50)
+		,@rol int
+		
+	select @existeUser = case when id is null then 0 else 1 end, @rol=id_rol from usuarios where correo = @usuario and password = @contra
+
+	if @existeUser = 0
+	select @res = 'Usuario o Contraseña incorrecta'
+	
+	--select existeUser=@existeUser,res=@res,rol=@rol
+
+	select res = isnull(@res,'ok'),rol = isnull(@rol,0)
+	return 
+END

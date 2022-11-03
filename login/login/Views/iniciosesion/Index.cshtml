@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewData["Title"] = "Inicio de Sesion";
+}
+
+@*<h1>iniciosesion</h1>
+<h2>test</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>correo</th>
+            <th>edad</th>
+            <th>dui</th>
+            <th>genero</th>
+            <th>id_rol</th>
+            <th>password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.nombre</td>
+                <td>@item.apellido</td>
+                <td>@item.correo</td>
+                <td>@item.edad</td>
+                <td>@item.dui</td>
+                <td>@item.genero</td>
+                <td>@item.id_rol</td>
+                <td>@item.password</td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="text-center">
+            <img src="@Url.Content("Images/logo.jpeg")" class="rounded" alt="...">
+        </div>
+    </div>
+    @using (Html.BeginForm("LogIn", "iniciosesion", FormMethod.Post, new { @class = "row" }))
+    {
+        @if (ViewData["err"].Equals(true))
+        {
+            <div class="bg-danger col-12"><p class="text-light">@ViewData["errMsg"]</p></div>
+        }
+        <div class="mb-3 col-10 offset-1">
+            <label for="user" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="user" name="user" type="text" value="" placeholder="name@example.com">
+            @*<input type="email" class="form-control" id="user" placeholder="name@example.com">*@
+        </div>
+        <div class="mb-3 col-10 offset-1">
+            <label for="psw" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="psw" name="psw" type="text" value="" placeholder="secret">
+            @*<input type="password" class="form-control" id="psw" placeholder="secret">*@
+        </div>
+        <div class="mb-3  col-2 offset-9">
+            <input type="submit"
+               value="Inicia Sesion" class="btn btn-danger"/>
+            @*onclick="location.href='@Url.Action("LogIn", "iniciosesion" )'" />*@
+        </div>
+        @*<p>
+    Usuario: @Html.TextBox("user") <br />
+    Contraseña: @Html.TextBox("psw") <br />
+    <input type="submit" value="Log In" />
+    </p>*@
+    }
+</div>
