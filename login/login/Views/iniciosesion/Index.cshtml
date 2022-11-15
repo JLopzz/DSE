@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Inicio de Sesion";
+    var imagePath = @"images\\logo.jpeg";
 }
 
 @*<h1>iniciosesion</h1>
@@ -40,7 +41,9 @@
 <div class="container">
     <div class="d-flex justify-content-center">
         <div class="text-center">
-            <img src="@Url.Content("Images/logo.jpeg")" class="rounded" alt="...">
+            <img src="@imagePath" class="rounded" alt="...">
+            <img src="C:\Users\JLopzz\Documents\DSE\login\login\images\logo.jpeg" class="rounded" alt="...">
+            <asp:Image id="Image1" runat="server" Height="59px" ImageUrl="images/logo.jpeg" runat="server" Width="190px" AlternateText="Imagen no disponible" ImageAlign="TextTop" />
         </div>
     </div>
     @using (Html.BeginForm("LogIn", "iniciosesion", FormMethod.Post, new { @class = "row" }))

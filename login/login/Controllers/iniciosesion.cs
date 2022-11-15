@@ -28,6 +28,12 @@ namespace login.Controllers
 
         public async Task<IActionResult> LogIn(string user , string psw )
         {
+            if(user == null || psw == null)
+            {
+                ViewData["errMsg"] = "No puede quedar Usuario o Contraseña Vacios";
+                ViewData["err"] = true;
+                return View("Index");
+            }
             ConnDB c = new ConnDB();
             String[] res; //= new String[2];
             res = await c.LogInDB(user, psw);
